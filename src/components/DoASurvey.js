@@ -12,28 +12,37 @@ const DoASurvey = () => {
             "name": "page1",
             "elements": [{
                     "type": "text",
-                    "name": "What is your name ?",
+                    "name": "firstname",
+                    "text": "First Name",
                     "isRequired": true,
-                    "placeHolder": "Name"
+                    "placeHolder": "First Name"
                 },
                 {
                     "type": "dropdown",
-                    "name": "Whesh language you speek ?",
+                    "name": "language",
+                    "text": "language",
                     "isRequired": true,
                     "choices": [{
-                            "value": "item1",
-                            "text": "Anglish"
+                            "value": "englich",
+                            "text": "English"
                         },
                         {
-                            "value": "item2",
+                            "value": "kabyle",
                             "text": "Kabyle"
                         },
                         {
-                            "value": "item3",
-                            "text": "French"
+                            "value": "francais",
+                            "text": "Francais"
                         }
                     ],
                     "choicesMin": 1
+                },
+                {
+                    "type": "rating",
+                    "name": "rating",
+                    "text": "rating",
+                    "isRequired": true,
+                    "placeHolder": "First Name"
                 }
             ]
         }]

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useAuth0 } from "../react-auth0-spa";
+import {Line} from 'react-chartjs-2';
 
 const SurveyDone = () => {
     const [survey, setSurvey] = useState([]);
@@ -19,16 +20,45 @@ const SurveyDone = () => {
         survey();
     }, [user]);
 
+    const lineChart = (
+        <Line
+            data={{
+                labels: survey.map(({ language }) => language),
+                datasets: [
+                    {
+                        data: survey.map(({ rating }) => rating),
+                        label: 'statistic',
+                        borderColor: '#3333ff',
+                        fill: true,
+                    },
+                ],
+            }}
+        />
+    );
+
+    if (!survey) {
+        return (
+            <h1>Nowthing !</h1>
+        );
+    }
+
     return (
+        <>
         <div>
             {survey.map((sur, index) => {
                 return (
                     <ul key={index}>
-                        <li> {JSON.stringify(sur)} </li>
+                        <li> {sur.firstname} </li>
+                        <li> {sur.language} </li>
+                        <li> {sur.rating} </li>
                     </ul>
                 )
             })}
         </div>
+        <div style={{width: "50%"}} >
+            {lineChart}
+        </div>
+        </>
     );
 }
 
